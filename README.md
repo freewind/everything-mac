@@ -50,6 +50,16 @@ The script generates the Xcode project from `App/project.yml`, builds a Release 
 - Open `App/EverythingMac.xcodeproj` in Xcode, select the EverythingMac target, go to Signing & Capabilities, turn on "Automatically manage signing," and pick your team.
 - Or edit `CODE_SIGN_IDENTITY` and `DEVELOPMENT_TEAM` in `App/project.yml` to your own values and re-run `./scripts/build-dev.sh`.
 
+### Intel (x86_64) build
+
+The release DMG is arm64-only, so it will not run on an Intel Mac. To build an Intel version, run:
+
+```bash
+./build-mac.sh
+```
+
+It builds the app with SwiftPM (no Xcode needed) and writes `EverythingMac-intel.dmg` in the repo root. The bundle is ad-hoc signed, so macOS blocks it on first open: run `xattr -dr com.apple.quarantine /Applications/EverythingMac.app`, or right-click the app and choose Open.
+
 ### Full Disk Access
 
 The app can only index everything if you give it Full Disk Access:
