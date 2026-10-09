@@ -82,3 +82,6 @@ hdiutil create -volname "Everything-Mac" -srcfolder "$APP" -ov -format UDZO "$DM
 echo
 echo "Built: $(pwd)/$APP"
 echo "Built: $(pwd)/$DMG"
+
+# Reveal the result: open the folder that holds the DMG.
+open "$(pwd)"
